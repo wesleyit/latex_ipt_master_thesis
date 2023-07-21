@@ -1,0 +1,79 @@
+% One of the most important sections, the references:
+\usepackage[english, brazilian]{babel}
+\usepackage[backend=biber,backref=true,repeatfields=true,style=abnt]{biblatex}
+\usepackage{csquotes}
+\usepackage{quoting}
+\usepackage{hyperref}
+
+% This will help to customize captions:
+\usepackage{caption}
+
+% Use and create colors definitions (with tables support):
+\usepackage[table,xcdraw]{xcolor}
+% Now it is possible to define colors like ina a theme:
+\definecolor{fgcolor}{HTML}{000000}
+\definecolor{bgcolor}{HTML}{FFFFFF}
+\definecolor{c1color}{HTML}{336699}
+\definecolor{c2color}{HTML}{99CCFF}
+\definecolor{c3color}{HTML}{CC9900}
+
+% These packages help to improve the tables building:
+\usepackage{array}  % Offers more flexible column formatting
+\usepackage{booktabs}  % Supports professional looking tables
+\usepackage{tabularx}  % Columns that expands to fill
+\usepackage{multirow}  % Lets tabular material span multiple rows
+\usepackage{array}  % Provides tabular that can split across pages
+\usepackage{multicol}  % Creates text columns
+
+% Tools for drawing boxes:
+\usepackage{tcolorbox}
+
+% This enables \fbox, \shadowbox, \doublebox, \ovalbox and \Ovalbox:
+\usepackage{fancybox}
+
+% Although this package requires xelatex or luatex,
+% it allows to change fonts for the entire document
+% using TTF files or fonts available in the SO:
+\usepackage{fontspec}
+
+% These fonts are used for special math symbols.
+% American Mathematical Society packages:
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+% These packages allow setting line spacing and margins:
+\usepackage{geometry}  % This package allows selecting margins size
+\usepackage{setspace}  % Allows selecting line spacing
+\usepackage{indentfirst}  % Indents each first paragraph
+
+% To have acronyms and glossaries working:
+\usepackage[printonlyused]{acronym}
+
+% In order to be compliant to ABNT, it is necessary to set some
+% special values to titles, indexes, tables, captions, etc:
+\usepackage{titlesec}  % Allows easily changing titles
+\usepackage{tocloft}  % Allows creating and customizing tables of things
+
+% The float package is necessary for creating custom float types,
+% like boards, a new kind of table:
+\usepackage{float}
+
+% Insert pictures, make drawings and plots:
+\usepackage{graphicx}
+\graphicspath{{./03_images/}}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+% Better headers and footers:
+\usepackage{fancyhdr}
+
+% Better time and date printing:
+\usepackage[portuges]{datetime2}
+
+
+% =====================================================================
+% Enable for debugging hbox errors:
+% \usepackage{showframe}

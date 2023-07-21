@@ -1,0 +1,230 @@
+% =============================================================================
+%% ABNT Formatting
+
+
+% =============================================================================
+%% The allowed page size for the thesis is A4 with 3cm and 2cm margins:
+\geometry{left=3cm, top=3cm, right=2cm, bottom=2cm}
+
+
+% =============================================================================
+%% All paragraphs should have 1.25cm indentation:
+\setlength{\parindent}{1.25cm}
+
+
+% =============================================================================
+%% According to ABNT, the documents should be written in Arial or Times fonts
+% only. The same font must follow the entire text.
+\setmainfont{Times New Roman}  % Roman family, if necessary
+\setsansfont{Arial}  % The sans serif general-purpose font
+\setmonofont{Courier New}  % Monospaced font for code and commands
+\urlstyle{same}  % Hyperlinks should honor the default font
+\renewcommand{\familydefault}{\sfdefault}  % The default set to Sans Serif
+
+
+% =============================================================================
+%% Fonts sizes can differ according to sections. The allowed sizes are:
+%
+% - 14pt bold for titles
+% - 12pt bold UPPERCASE centered for sections titles
+% - 12pt bold TitleCase centered for subsections titles
+% - 12pt bold TitleCase centered for subsubsections titles
+% - 12pt regular for normal text
+% - 10pt bold for captions titles
+% - 10pt regular for captions
+%
+% Following these rules, only 3 sizes need to be used in this document.
+% As the base size is 12pt, then:
+%
+% \footnotesize = 10pt
+% \normalsize = 12pt
+% \large = 14pt
+
+\titleformat{\section}
+{\newpage\centering\normalfont\normalsize\bfseries\uppercase}
+{\thesection}
+{1em}{}[]
+\titlespacing{\section}{0pt}{2\bigskipamount}{\bigskipamount}
+
+\titleformat{\subsection}
+{\normalfont\normalsize\bfseries\uppercase}
+{\thesubsection}
+{1em}{}[]
+\titlespacing{\subsection}{0pt}{2\bigskipamount}{\bigskipamount}
+
+\titleformat{\subsubsection}
+{\normalfont\normalsize\bfseries}
+{\thesubsubsection}
+{1em}{}[]
+\titlespacing{\subsubsection}{0pt}{2\bigskipamount}{\bigskipamount}
+
+
+% =============================================================================
+%% The titles for lists of tables, images, etc. must comply
+% with the same formatting as sections:
+\addto\captionsbrazilian{
+    \renewcommand{\listfigurename}{\uppercase{Lista de Ilustrações}}
+    \renewcommand{\listtablename}{\uppercase{Lista de Tabelas}}
+    \renewcommand{\listboardname}{\uppercase{Lista de Quadros}}
+    \renewcommand{\contentsname}{\section*{Sumário}}
+}
+
+
+% =============================================================================
+%% The summary must be left aligned without indent, and with dots
+% connecting the section name and the page number. Three levels
+% must be included: sections, subsections and subsubsections:
+\setcounter{tocdepth}{3}
+\cftsetindents{section}{0pt}{40pt}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\cftsetindents{subsection}{0pt}{40pt}
+\renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
+\cftsetindents{subsubsection}{0pt}{40pt}
+\renewcommand{\cftsubsubsecleader}{\cftdotfill{\cftdotsep}}
+
+
+% =============================================================================
+%% ABNT requires 10pt gray page numbers on top right:
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyhead[R]{\color{gray}\footnotesize\thepage}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+}
+
+
+% =============================================================================
+%% According to ABNT, there are a proper formatting for captions:
+\DeclareCaptionLabelSeparator{abntdash}{\space--\space}
+\captionsetup{labelsep=abntdash}
+\captionsetup{font=footnotesize, labelfont=bf}
+\captionsetup[figure]{name=Figura}
+% \captionsetup[table]{name=Tabela}
+% \captionsetup[board]{name=Quadrinho}
+
+
+% =============================================================================
+%% In ABNT, citations with more than 3 lines must be in smaller font (10pt)
+% and with a 4cm block indent:
+% ABNT citation for 3 or more lines:
+\newenvironment{ABNTciteLong}
+{\setlength{\parindent}{0cm}
+    \begin{quoting}[rightmargin=0cm,leftmargin=4cm]
+        \begin{singlespace}
+            \begin{footnotesize}
+                }
+                {
+            \end{footnotesize}
+        \end{singlespace}
+    \end{quoting}
+}
+
+
+% =============================================================================
+%% In ABNT, tables are not closed, and they are used to express
+% numerical data. To demonstrate qualitative information instead
+% of quantitative, use a board. It is similar to a table, but has
+% borders on all its sides. This environment defines a board
+% structure, and also its counters, captions, and lists of boards:
+
+\newcommand{\listboardname}{Lista de Quadros}
+\newfloat{boards}{htb}{lob}
+\floatname{boards}{Quadro}
+\newenvironment{board}[1][]
+{
+    \begin{table}[!htb]
+        \centering
+        }
+        {
+    \end{table}
+}
+
+%% To make things easier, this shortcut can help to create boards with less effort:
+% usage: \ABNTboard{caption}{reference}{label}{tabular}
+\newcommand{\ABNTboard}[4]{
+    \begin{board}[#1]
+        \captionsetup{name=Quadro}
+        \captionof{boards}{#1}
+        \label{#3}
+        #4
+        \caption*{\textbf{Fonte:} #2}
+    \end{board}
+}
+
+%% The same for tables:
+% usage: \ABNTtable{caption}{reference}{label}{tabular}
+\newcommand{\ABNTtable}[4]{
+    \begin{table}
+        \centering
+        \caption{#1}
+        \label{#3}
+        #4
+        \caption*{\textbf{Fonte:} #2}
+    \end{table}
+}
+
+% =============================================================================
+%% This will create links to references and URLs
+% and also display in which page a reference is cited:
+\DefineBibliographyStrings{brazilian}{
+    backrefpage={Citado na página\space},
+    backrefpages={Citado nas páginas\space}
+}
+
+
+% =============================================================================
+%% This snippet make easy to create standardized images with captions:
+% usage: \ABNTfigure{caption}{reference}{path}{size}{label}
+\newcommand{\ABNTfigure}[5]{ % dasdsadasdsa
+    \begin{figure}[!htb]
+        \centering
+        \caption{#1}
+        \includegraphics[#4]{#3}
+        \caption*{\textbf{Fonte:} #2}
+        \label{#5}
+    \end{figure}
+}
+
+
+% =============================================================================
+%% This snippet helps to create message boxes for in-text notifications:
+% usage: \MSGBOXProblem{title}{text}
+\newcommand{\MSGBOXProblem}[2]{
+    \begin{tcolorbox}[
+            width=\textwidth,
+            colupper={white},
+            colback={red},
+            title={\centering \textbf{#1}},
+            colbacktitle={red},
+            coltitle={white}
+        ]
+        #2
+    \end{tcolorbox}
+}
+
+
+% =============================================================================
+%% Package hyperref setup
+% This will set metadata in the resulting PDF file.
+% It also will properly set colors in the hyperlinks:
+\makeatletter
+\pdfstringdefDisableCommands{
+\def\\{}
+\def\texttt#1{<#1>}
+}
+\makeatother
+\hypersetup{
+    colorlinks=true,
+    linkcolor=fgcolor,
+    filecolor=fgcolor,
+    citecolor=fgcolor,
+    urlcolor=c1color,
+    pdfauthor={\thsstudent},
+    pdftitle={\thstitle},
+    pdfsubject={\thstitle},
+    pdfkeywords={\thskeywords},
+    pdfpagemode=FullScreen
+}
+
+
+% =============================================================================

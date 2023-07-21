@@ -1,0 +1,49 @@
+\section{INTRODUÇÃO}
+
+Este é um exemplo de texto de introdução.
+
+\subsection{Buscando Orientação}
+
+No site do \textcite{texdoc_2023} é possível buscar por pacotes \LaTeX para obter informações de como utilizá-los.
+
+\ABNTfigure
+{Captura de tela do TEXDoc.}
+{\textcite{texdoc_2023}}
+{texdoc.png}
+{width=0.8\textwidth}
+{fig:texdoc}
+
+É possível referenciar imagens usando labels, como a \ref{fig:texdoc}.
+
+\subsubsection{Conformidade com ABNT}
+
+A ABNT define que há diferenças entre quadros e tabelas.
+informações quantitativas vão em tabelas, qualitativas vão em quadros.
+
+\ABNTboard
+{Deuses do Olimpo na Grécia e suas versões romanas.}
+{Autor (2023).}
+{board:deuses}
+{
+    \begin{tabular}{|l|l|l|l|}
+        \hline
+                        & \textbf{Amor}     & \textbf{Sabedoria} & \textbf{Guerra} \\ \hline
+        \textbf{Grécia} & \textit{Afrodite} & \textit{Athena}    & \textit{Ares}   \\ \hline
+        \textbf{Roma}   & \textit{Venus}    & \textit{Minerva}   & \textit{Marte}  \\ \hline
+    \end{tabular}
+}
+
+
+\ABNTtable
+{Crescimento populacional.}
+{Autor (2023).}
+{table:população}
+{
+    \begin{tabular}{llll}
+        \hline
+                        & \textbf{2000}        & \textbf{2010}        & \textbf{2020}        \\ \hline
+        \textbf{Brasil} & \textit{200.000.000} & \textit{205.000.000} & \textit{212.000.000} \\ \hline
+    \end{tabular}
+}
+
+As siglas e acrônimos podem adicionados ao arquivo acronyms.txt, como foi feito com \ac{abnt}.

@@ -1,0 +1,53 @@
+% !TeX program = lualatex
+
+\documentclass[a4paper,12pt]{article}
+
+% This section will include files for installing packages,
+% configuring styles, and defining information about the thesis.
+\input{./00_config/01_packages.tex}
+\input{./00_config/02_variables.tex}
+\input{./00_config/03_abnt.tex}
+
+% The file with bibliographic references.
+% You may include additional files from here:
+\addbibresource{./01_include/references.bib}
+
+% This point marks the begin of the written part, the
+% configuration end.
+\begin{document}
+
+% This section is where all the elements that come before the
+% main text of the thesis come.
+\pagestyle{empty}
+\singlespacing
+\input{./02_content/01_pre_text/01_cover.tex}
+\input{./02_content/01_pre_text/02_book_spine.tex}
+\input{./02_content/01_pre_text/03_internal_cover.tex}
+\input{./02_content/01_pre_text/04_catalog_sheet.tex}
+\input{./02_content/01_pre_text/05_errata.tex}
+\input{./02_content/01_pre_text/06_approval_sheet.tex}
+\input{./02_content/01_pre_text/07_dedication.tex}
+\input{./02_content/01_pre_text/08_aknowledgements.tex}
+\input{./02_content/01_pre_text/09_epigraph.tex}
+\input{./02_content/01_pre_text/10_abstract_pt.tex}
+\input{./02_content/01_pre_text/11_abstract_en.tex}
+\input{./02_content/01_pre_text/12_lists.tex}
+\input{./02_content/01_pre_text/13_summary.tex}
+
+% This is the main section, where the thesis is written.
+\pagestyle{plain}
+\onehalfspacing
+\input{./02_content/02_main_text/01_introduction.tex}
+\input{./02_content/02_main_text/02_literature_review.tex}
+\input{./02_content/02_main_text/03_methods.tex}
+\input{./02_content/02_main_text/04_final_discussion.tex}
+
+% This section holds the post textual elements, such as
+% the attachments and bibliography.
+\pagestyle{empty}
+\singlespacing
+\input{./02_content/03_post_text/02_apendices.tex}
+\input{./02_content/03_post_text/03_attachments.tex}
+\input{./02_content/03_post_text/references.tex}
+
+\end{document}
