@@ -47,7 +47,7 @@
 \titlespacing{\section}{0pt}{2\bigskipamount}{\bigskipamount}
 
 \titleformat{\subsection}
-{\normalfont\normalsize\bfseries\uppercase}
+{\normalfont\normalsize\bfseries}
 {\thesubsection}
 {1em}{}[]
 \titlespacing{\subsection}{0pt}{2\bigskipamount}{\bigskipamount}
@@ -66,9 +66,18 @@
     \renewcommand{\listfigurename}{\uppercase{Lista de Ilustrações}}
     \renewcommand{\listtablename}{\uppercase{Lista de Tabelas}}
     \renewcommand{\listboardname}{\uppercase{Lista de Quadros}}
+    \renewcommand{\lstlistlistingname}{\uppercase{Lista de Códigos-fonte}}
     \renewcommand{\contentsname}{\section*{Sumário}}
 }
 
+%% The captions must contain a proper format. This helps those environments,
+% such lstlistings, that doesn't have two captions:
+% usage: \ABNTFont{Autor (2022)} | \ABNTFont{\textcite{GARCIA_1987}}
+\newcommand{\ABNTFont}[1]{
+    \begin{center}
+        \footnotesize\textbf{Fonte:\space} #1.
+    \end{center}
+}
 
 % =============================================================================
 %% The summary must be left aligned without indent, and with dots
@@ -81,6 +90,13 @@
 \renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
 \cftsetindents{subsubsection}{0pt}{40pt}
 \renewcommand{\cftsubsubsecleader}{\cftdotfill{\cftdotsep}}
+
+%% This setting will change the section entries in the 
+% summary in order to make them uppercase:
+\makeatletter
+\let\oldl@section\l@section
+\renewcommand*\l@section[2]{\oldl@section{\uppercase{#1}}{#2}}
+\makeatother
 
 
 % =============================================================================
@@ -107,7 +123,7 @@
 %% In ABNT, citations with more than 3 lines must be in smaller font (10pt)
 % and with a 4cm block indent:
 % ABNT citation for 3 or more lines:
-\newenvironment{ABNTciteLong}
+\newenvironment{ABNTCiteLong}
 {\setlength{\parindent}{0cm}
     \begin{quoting}[rightmargin=0cm,leftmargin=4cm]
         \begin{singlespace}
@@ -118,6 +134,33 @@
         \end{singlespace}
     \end{quoting}
 }
+
+
+% =============================================================================
+%% In Computer Science it is very common to present source code.
+% This settings will format lstlistings properly:
+\lstdefinestyle{ABNTCodeStyle}{
+    backgroundcolor=\color{white},
+    commentstyle=\itshape\color{darkgray},
+    keywordstyle=\bfseries\color{magenta},
+    numberstyle=\color{lightgray},
+    stringstyle=\color{blue},
+    basicstyle=\ttfamily\footnotesize\color{black},
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=t,
+    frame=lines,
+    identifierstyle=\bfseries\color{black},
+    keepspaces=true,
+    numbers=left,
+    numbersep=20pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+}
+\lstset{style=ABNTCodeStyle}
+\renewcommand{\lstlistingname}{Código-fonte}
 
 
 % =============================================================================

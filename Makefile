@@ -9,7 +9,8 @@ delete_aux_files:
 	./*.toc ./*.bbl ./*.blg ./*.out \
 	./*.idx ./*.ilg ./*.ind ./*.acn \
 	./*.glo ./*.glsdefs ./*.ist ./*.lob \
-	./*.vrb ./*.snm ./*.nav ./*.lof ./*.lot
+	./*.vrb ./*.snm ./*.nav ./*.lof ./*.lot \
+	./*.lol
 
 delete_pdf:
 	@echo "Deleting the PDF file..."

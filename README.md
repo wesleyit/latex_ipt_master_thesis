@@ -1,5 +1,5 @@
-LATEX MASTER THESIS
-===================
+LATEX IPT MASTER THESIS
+=======================
 
 Este template de dissertação de mestrado foi elaborado inicialmente para o IPT - Instituto de Pesquisas Tecnológicas do Estado de São Paulo, mas pode facilmente ser adaptado para outras instituições que exijam documentos em conformidade com as normas de formatação de trabalhos acadêmicos da ABNT.
 
