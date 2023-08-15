@@ -11,6 +11,18 @@
 %% All paragraphs should have 1.25cm indentation:
 \setlength{\parindent}{1.25cm}
 
+%% Items must be single spaced:
+\let\olditemize\itemize
+\let\oldenditemize\enditemize
+\renewenvironment{itemize}
+{\olditemize\setlength\itemsep{-0.2em}}
+{\oldenditemize}
+
+%% Tables need more space to be comfortably to read:
+\setlength{\tabcolsep}{10pt}
+\renewcommand{\arraystretch}{1.5}
+\setlength{\arrayrulewidth}{0.2pt}
+\arrayrulecolor{gray}
 
 % =============================================================================
 %% According to ABNT, the documents should be written in Arial or Times fonts
@@ -106,6 +118,7 @@
     \fancyhead[R]{\color{gray}\footnotesize\thepage}
     \renewcommand{\headrulewidth}{0pt}
     \renewcommand{\footrulewidth}{0pt}
+    \setlength{\skip\footins}{40pt}
 }
 
 

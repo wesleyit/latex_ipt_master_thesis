@@ -1,12 +1,14 @@
 {
     "cSpell.words": [
         "abntdash",
+        "ABNTEX",
         "backrefpages",
         "basicstyle",
         "biblatex",
         "breakatwhitespace",
         "captionpos",
         "darkgray",
+        "fgcolor",
         "hbox",
         "keepspaces",
         "keywordstyle",
@@ -14,6 +16,7 @@
         "labelsep",
         "lightgray",
         "lstlistings",
+        "lualatex",
         "luatex",
         "numbersep",
         "numberstyle",
